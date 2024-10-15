@@ -42,7 +42,7 @@
         const cube = document.getElementById('cube');
         let direction = 1; // 1 für rechts, -2 für links
         let position = -1;
-        const moveDistance = 200; // Distanz, die der Würfel bewegt wird
+        const moveDistance = 100; // Distanz, die der Würfel bewegt wird
         const maxWidth = 375 - 50; // Maximale Breite für die Bewegung (Breite - Würfelbreite)
 
         cube.addEventListener('click', () => {
@@ -53,7 +53,7 @@
             if (position > maxWidth) {
                 position = maxWidth; // Setze auf maximal nach rechts
             } else if (position < 0) {
-                position = 0; // Setze auf maximal nach links
+                position = -1; // Setze auf maximal nach links
             }
 
             cube.style.transform = `translateX(${position}px)`;
