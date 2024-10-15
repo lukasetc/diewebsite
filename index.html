@@ -33,17 +33,27 @@
 </head>
 <body>
     <h1>Die Website</h1>
-    <p>   Drück drauf-> </p>
+    <p>Drück drauf-></p>
     <div id="cube"></div>
 
     <script>
         const cube = document.getElementById('cube');
-        let direction = 1; // 1 für unten, -1 für oben
+        let direction = 1; // 1 für rechts, -1 für links
         let position = 0;
+        const moveDistance = 100; // Distanz, die der Würfel bewegt wird
+        const maxWidth = window.innerWidth - 50; // Maximale Breite für die Bewegung
 
         cube.addEventListener('click', () => {
-            const moveDistance = 100; // Distanz, die der Würfel bewegt wird
+            // Update position
             position += direction * moveDistance;
+
+            // Begrenze die Position
+            if (position > maxWidth) {
+                position = maxWidth; // Setze auf maximal nach rechts
+            } else if (position < 0) {
+                position = 0; // Setze auf maximal nach links
+            }
+
             cube.style.transform = `translateX(${position}px)`;
 
             // Richtung umkehren
