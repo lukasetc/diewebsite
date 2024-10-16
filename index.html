@@ -31,16 +31,33 @@
             position: relative;
             transition: transform 0.5s;
         }
+        .paypal-button {
+            margin-top: 20px;
+            background-color: #0070ba;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .paypal-button:hover {
+            background-color: #005c99;
+        }
     </style>
 </head>
 <body>
     <h1>Die Website</h1>
-    <p>Drück drauf</p>
+    <p>Drück auf den Würfel oder bezahle mit PayPal</p>
     <div id="cube"></div>
+
+    <!-- PayPal Button -->
+    <button class="paypal-button" id="paypalButton">Bezahlen mit PayPal</button>
 
     <script>
         const cube = document.getElementById('cube');
-        let direction = 1; // 1 für rechts, -2 für links
+        let direction = 1; // 1 für rechts, -1 für links
         let position = -1;
         const moveDistance = 100; // Distanz, die der Würfel bewegt wird
         const maxWidth = 375 - 50; // Maximale Breite für die Bewegung (Breite - Würfelbreite)
@@ -61,6 +78,13 @@
             // Richtung umkehren
             direction *= -1;
         });
+
+        // PayPal Button Funktion
+        document.getElementById('paypalButton').addEventListener('click', function() {
+            const paypalUrl = "https://www.paypal.com/paypalme/my/settings?flow=cmV0dXJuVXJsPWh0dHBzOi8vd3d3LnBheXBhbC5jb20vbXlhY2NvdW50L3RyYW5zZmVyL2hvbWVwYWdlL3JlcXVlc3QmY2FuY2VsVXJsPWh0dHBzOi8vd3d3LnBheXBhbC5jb20vbXlhY2NvdW50L3RyYW5zZmVyL2hvbWVwYWdlL3JlcXVlc3Q=";
+            window.location.href = paypalUrl; // Leitet zum PayPal-Link weiter
+        });
     </script>
+
 </body>
 </html>
